@@ -9,7 +9,7 @@ on:
 # List of jobs
 jobs:
   chromatic-deployment:
-    if: ${{ github.event.label.name == 'storybook' }}
+    if: ${{ contains(github.event.*.labels.*.name, 'storybook') }}
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
