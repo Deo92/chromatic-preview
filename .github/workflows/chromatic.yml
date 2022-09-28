@@ -3,8 +3,8 @@ name: 'Chromatic'
 
 # Event for the workflow
 on:
-  push:
-    types: [ labeled ]
+  pull_request:
+    types: [synchronize, opened, reopened, labeled, unlabeled]
 
 # List of jobs
 jobs:
