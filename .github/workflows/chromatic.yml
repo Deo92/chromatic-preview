@@ -5,8 +5,6 @@ name: 'Chromatic'
 on:
   push:
     types: [ labeled ]
-  pull_request:
-    types: [ labeled ]
 
 # List of jobs
 jobs:
