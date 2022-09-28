@@ -6,29 +6,19 @@ on: [ push, label ]
 
 # List of jobs
 jobs:
-  check_pr_labels_job:
+  chromatic-deployment:
+    if: ${{ github.event.label.name == 'storybook' }}
+    # Operating System
     runs-on: ubuntu-latest
-    name: A job to check the PR labels contain given labels
+    # Job steps
     steps:
-    - name: Check PR labels action step
-      id: check_pr_labels
-      uses: shioyang/check-pr-labels-on-push-action@v1.0.6
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        labels: '["storybook"]'
-    - name: See result
-      run: echo "${{ steps.check_pr_labels.outputs.result }}"
-
-    if: ${{ steps.check_pr_labels.outputs.result == true }}
-    - uses: actions/checkout@v1
-    - name: Install dependencies
-      if: ${{ steps.check_pr_labels.outputs.result == true }}
-      run: yarn
-      # 👇 Adds Chromatic as a step in the workflow
-    - name: Publish to Chromatic
-      if: ${{ steps.check_pr_labels.outputs.result == true }}
-      uses: chromaui/action@v1
-      # Chromatic GitHub Action options
-      with:
-        # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-        projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      - uses: actions/checkout@v1
+      - name: Install dependencies
+        run: yarn
+        # 👇 Adds Chromatic as a step in the workflow
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Chromatic GitHub Action options
+        with:
+          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
