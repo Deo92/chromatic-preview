@@ -2,7 +2,7 @@
 name: 'Chromatic'
 
 # Event for the workflow
-on: [ push, label ]
+on: [ push, labeled ]
 
 # List of jobs
 jobs:
