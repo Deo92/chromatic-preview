@@ -20,7 +20,6 @@ jobs:
       run: echo "${{ steps.check_pr_labels.outputs.result }}"
 
   chromatic-deployment:
-    if: ${{ github.event.label.name == 'storybook' }}
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
