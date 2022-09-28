@@ -2,12 +2,23 @@
 name: 'Chromatic'
 
 # Event for the workflow
-on:
-  push:
-    types: [ labeled ]
+on: push
 
 # List of jobs
 jobs:
+  check_pr_labels_job:
+    runs-on: ubuntu-latest
+    name: A job to check the PR labels contain given labels
+    steps:
+    - name: Check PR labels action step
+      id: check_pr_labels
+      uses: shioyang/check-pr-labels-on-push-action@v1.0.6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        labels: '["storybook"]'
+    - name: See result
+      run: echo "${{ steps.check_pr_labels.outputs.result }}"
+
   chromatic-deployment:
     if: ${{ github.event.label.name == 'storybook' }}
     # Operating System
