@@ -29,5 +29,5 @@ export const Default = Template.bind({});
 
 Default.args = {
     text: 'Click Me',
-    variant: 'contained',
+    variant: 'outlined',
 };
