@@ -28,6 +28,6 @@ const Template: Story<GivelifyButtonProps> = args => (
 export const Default = Template.bind({});
 
 Default.args = {
-    text: 'Click Me',
+    text: 'Click Me Button',
     variant: 'outlined',
 };
