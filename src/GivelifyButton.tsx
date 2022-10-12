@@ -4,7 +4,6 @@ import { Button, ButtonProps, styled } from '@mui/material';
 const StyledButton = styled(Button)({
     borderRadius: '32px',
     padding: '8px 16px',
-    backgroundColor: 'red',
 });
 
 export type GivelifyButtonProps = ButtonProps & {
