@@ -1,5 +1,5 @@
 {
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -20,7 +20,8 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN"
+    "chromatic": "chromatic --project-token=CHROMATIC_PROJECT_TOKEN",
+    "release": "standard-version"
   },
   "peerDependencies": {
     "react": ">=16"
@@ -76,9 +77,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
-    "@mui/material": "^5.10.7"
+    "@mui/material": "^5.10.7",
+    "standard-version": "^9.5.0"
   },
   "standard-version": {
-    "releaseCommitMessageFormat": "chore(release): {{currentTag}}\n[ci skip]"
+    "releaseCommitMessageFormat": "chore(release): {{currentTag}} [skip ci]"
   }
 }
