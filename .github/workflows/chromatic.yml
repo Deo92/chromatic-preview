@@ -7,6 +7,7 @@ on: push
 # List of jobs
 jobs:
   chromatic-deployment:
+    if: "!contains(github.event.head_commit.message, '[ci skip]')"
     # Operating System
     runs-on: ubuntu-latest
     # Job steps
