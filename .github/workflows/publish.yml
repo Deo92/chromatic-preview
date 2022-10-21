@@ -22,6 +22,9 @@ jobs:
         with:
           node-version: 14.x
           always-auth: true
+      
+      - name: Install packages
+        run: yarn install
 
       - name: Git config
         run: |
