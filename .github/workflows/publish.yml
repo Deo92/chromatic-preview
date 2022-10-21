@@ -25,6 +25,11 @@ jobs:
           node-version: 14.x
           always-auth: true
 
+      - name: Git config
+        run: |
+          git config --local user.email "deo92@users.noreply.github.com"
+          git config --local user.name "deo92"
+
       - name: Major version bump
         if: contains(github.event.pull_request.labels.*.name, 'major')
         run: yarn version --major
