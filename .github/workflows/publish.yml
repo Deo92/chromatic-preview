@@ -3,8 +3,6 @@ on:
     pull_request:
         branches: [master]
         types: [closed]
-env:
-  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   release:
@@ -27,8 +25,8 @@ jobs:
 
       - name: Git config
         run: |
-          git config --local user.email "deo92@users.noreply.github.com"
-          git config --local user.name "deo92"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
 
       - name: Major version bump
         if: contains(github.event.pull_request.labels.*.name, 'major')
