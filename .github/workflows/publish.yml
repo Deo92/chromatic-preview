@@ -1,0 +1,44 @@
+name: Publish
+on:
+    pull_request:
+        branches: [master]
+        types: [closed]
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  release:
+    if: contains(github.event.pull_request.labels.*.name, 'release')
+    runs-on: ubuntu-latest
+    name: Bump version and Publish
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+        with:
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+          fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      - name: Use Node 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          always-auth: true
+
+      - name: Major version bump
+        if: contains(github.event.pull_request.labels.*.name, 'major')
+        run: yarn version --major
+
+      - name: Minor version bump
+        if: contains(github.event.pull_request.labels.*.name, 'minor') && contains(github.event.pull_request.labels.*.name, 'major') != true
+        run: yarn version --minor
+
+      - name: Patch version
+        if: contains(github.event.pull_request.labels.*.name, 'minor') != true && contains(github.event.pull_request.labels.*.name, 'major') != true
+        run: yarn version --patch
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: master
