@@ -4,6 +4,9 @@ on:
         branches: [master]
         types: [closed]
 
+env:
+  GITHUB_TOKEN: ${{ secrets.PUSH_GITHUB_TOKEN }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
