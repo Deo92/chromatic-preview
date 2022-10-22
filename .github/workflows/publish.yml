@@ -36,6 +36,3 @@ jobs:
 
       - run: yarn release
       - run: git push --follow-tags origin master
-        with:
-          github_token: ${{ secrets.TEMURI_GITHUB_TOKEN }}
-          branch: master
