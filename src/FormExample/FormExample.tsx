@@ -31,7 +31,7 @@ export const FormExample: React.FC = () => {
                             'data-testid': 'input-last',
                         }}
                     />
-                    <Typography>{`Welcome Here: ${firstName} ${lastName}`}</Typography>
+                    <Typography>{`Welcome: ${firstName} ${lastName}`}</Typography>
                 </Stack>
             </Paper>
         </Stack>
