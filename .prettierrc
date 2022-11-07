@@ -3,6 +3,5 @@
     "tabWidth": 4,
     "semi": true,
     "useTabs": false,
-    "trailingComma": "all",
-    "parser": "typescript"
+    "trailingComma": "all"
 }
